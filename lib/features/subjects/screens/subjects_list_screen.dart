@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../data/subjects_service.dart';
 import '../widgets/subject_card.dart';
-import 'package:monlege/features/content_view/trimesters_screen.dart';
+// CORRECTION CHIRURGICALE DU CHEMIN D'IMPORTATION :
+import 'package:monlege/features/content_view/trimester_menu_screen.dart'; 
 
 class SubjectsListScreen extends StatefulWidget {
   final String niveauId;   
@@ -24,7 +25,6 @@ class _SubjectsListScreenState extends State<SubjectsListScreen> {
   @override
   void initState() {
     super.initState();
-    // Appel de la méthode avec la casse exacte attendue par votre service
     _futureMatieres = _subjectsService.getMatieresParNiveau(widget.niveauId);
   }
 
@@ -42,53 +42,56 @@ class _SubjectsListScreenState extends State<SubjectsListScreen> {
         backgroundColor: Colors.transparent,
         iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: FutureBuilder<List<Map<String, dynamic>>>(
-        future: _futureMatieres,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(color: Color(0xFF8B5CF6)),
-            );
-          }
-
-          if (snapshot.hasError || !snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(
-              child: Padding(
-                padding: EdgeInsets.all(24.0),
-                child: Text(
-                  "Aucune matière trouvée.",
-                  style: TextStyle(color: Colors.white54, fontSize: 16),
-                ),
-              ),
-            );
-          }
-
-          final matieres = snapshot.data!;
-
-          return ListView.builder(
-            padding: const EdgeInsets.symmetric(vertical: 12.0),
-            physics: const BouncingScrollPhysics(),
-            itemCount: matieres.length,
-            itemBuilder: (context, index) {
-              final matiere = matieres[index];
-
-              return SubjectCard(
-                title: matiere['nom'] ?? 'Matière Inconnue',
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => TrimestersScreen(
-                        niveauId: widget.niveauId,
-                        matiereData: matiere,
-                      ),
-                    ),
-                  );
-                },
+      body: SafeArea(
+        child: FutureBuilder<List<Map<String, dynamic>>>(
+          future: _futureMatieres,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(color: Color(0xFF8B5CF6)),
               );
-            },
-          );
-        },
+            }
+
+            if (snapshot.hasError || !snapshot.hasData || snapshot.data!.isEmpty) {
+              return const Center(
+                child: Padding(
+                  padding: EdgeInsets.all(24.0),
+                  child: Text(
+                    "لم يتم العثور على مواد.",
+                    style: TextStyle(color: Colors.white54, fontSize: 16, fontFamily: 'sans-serif'),
+                  ),
+                ),
+              );
+            }
+
+            final matieres = snapshot.data!;
+
+            return ListView.builder(
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              physics: const BouncingScrollPhysics(),
+              itemCount: matieres.length,
+              itemBuilder: (context, index) {
+                final matiere = matieres[index];
+
+                return SubjectCard(
+                  title: matiere['nom'] ?? 'Matière Inconnue',
+                  onTap: () {
+                    // Cible corrigée vers l'Écran 4 (Choix du Trimestre avec cadenas)
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TrimesterMenuScreen(
+                          niveauId: widget.niveauId,
+                          matiereData: matiere,
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }

@@ -194,7 +194,7 @@ class DashboardScreen extends StatelessWidget {
             MaterialPageRoute(
               builder: (context) => SubjectsListScreen(
                 niveauId: niveauId,
-                niveauNom: title,
+                niveauNom: title, // Correction chirurgicale : Fournit le paramètre manquant
               ),
             ),
           );
