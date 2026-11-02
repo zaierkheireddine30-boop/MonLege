@@ -1,0 +1,601 @@
+
+{
+  "pays": "Tunisie",
+  "cycle": "Enseignement de base",
+  "trimestre": "1er Trimestre",
+  "niveaux": [
+    {
+      "id": "7eme",
+      "nom": "السابعة من التعليم الأساسي",
+      "matieres": [
+        {
+          "id": "7_math",
+          "nom": "الرياضيات",
+          "est_math": true,
+          "trimestres": {
+            "trimestre_1": {
+              "cours": {
+                "algebre": [
+                  { "id": "7_m_t1_c_alg1", "titre": "الدرس 1: الحساب - القابلية القسمة على 2 و 5 و 3 و 9" },
+                  { "id": "7_m_t1_c_alg2", "titre": "الدرس 2: الحساب - القابلية القسمة على 4 و 25" },
+                  { "id": "7_m_t1_c_alg3", "titre": "الدرس 3: الكسور - الكتابة والمقارنة" }
+                ],
+                "geometrie": [
+                  { "id": "7_m_t1_c_geo1", "titre": "الدرس 1: الوضعيات النسبية لمستقيمين" },
+                  { "id": "7_m_t1_c_geo2", "titre": "الدرس 2: الزوايا - قيس وبناء" },
+                  { "id": "7_m_t1_c_geo3", "titre": "الدرس 3: التناظر المحوري - تقديم" }
+                ]
+              },
+              "resumes": {
+                "algebre": [{ "id": "7_m_t1_r_alg1", "titre": "ملخص: قواعد قابلية القسمة" }],
+                "geometrie": [{ "id": "7_m_t1_r_geo1", "titre": "ملخص: العلاقات بين الزوايا والمستقيمات" }]
+              },
+              "qcm": [{ "id": "7_m_t1_q1", "parent_lecon_id": "7_m_t1_c_alg1", "titre": "تطبيق: قابلية القسمة" }],
+              "devoir_controle": [{ "id": "7_m_t1_dc1", "titre": "فرض مراقبة عدد 1 في الرياضيات" }],
+              "synthese": [{ "id": "7_m_t1_ds1", "titre": "فرض تأليفي عدد 1 في الرياضيات" }],
+              "serie": [{ "id": "7_m_t1_s1", "titre": "سلسلة تمارين دعم: الأعداد والكسور" }]
+            }
+          }
+        },
+        {
+          "id": "7_ar",
+          "nom": "العربية",
+          "est_math": false,
+          "trimestres": {
+            "trimestre_1": {
+              "cours": [
+                { "id": "7_ar_t1_c1", "titre": "شرح نص: المحور 1 - الأسرة والطفولة" },
+                { "id": "7_ar_t1_c2", "titre": "قواعد اللغة: المبتدأ والخبر ونواسخهما" }
+              ],
+              "resumes": [{ "id": "7_ar_t1_r1", "titre": "ملخص: أحكام الجملة الاسمية" }],
+              "qcm": [{ "id": "7_ar_t1_q1", "parent_lecon_id": "7_ar_t1_c2", "titre": "تطبيق: إعراب النواسخ" }],
+              "devoir_controle": [{ "id": "7_ar_t1_dc1", "titre": "فرض مراقبة عدد 1 في العربية" }],
+              "synthese": [{ "id": "7_ar_t1_ds1", "titre": "فرض تأليفي عدد 1 في العربية" }],
+              "serie": [{ "id": "7_ar_t1_s1", "titre": "تمارين إنتاج كتابي وتعبير" }]
+            }
+          }
+        },
+        {
+          "id": "7_svt",
+          "nom": "علوم الحياة والأرض",
+          "est_math": false,
+          "trimestres": {
+            "trimestre_1": {
+              "cours": [
+                { "id": "7_svt_t1_c1", "titre": "الدرس 1: الوسط الطبيعي - تنوعه ومكوناته" },
+                { "id": "7_svt_t1_c2", "titre": "الدرس 2: الخلية - وحدة بناء الكائن الحي" }
+              ],
+              "resumes": [{ "id": "7_svt_t1_r1", "titre": "رسم بياني: مكونات الخلية" }],
+              "qcm": [{ "id": "7_svt_t1_q1", "parent_lecon_id": "7_svt_t1_c1", "titre": "تطبيق: الكائنات الحية" }],
+              "devoir_controle": [{ "id": "7_svt_t1_dc1", "titre": "فرض مراقبة عدد 1 في العلوم" }],
+              "synthese": [{ "id": "7_svt_t1_ds1", "titre": "فرض تأليفي عدد 1 في العلوم" }],
+              "serie": [{ "id": "7_svt_t1_s1", "titre": "سلسلة تمارين: الأوساط البيئية" }]
+            }
+          }
+        },
+        {
+          "id": "7_phys",
+          "nom": "العلوم الفيزيائية",
+          "est_math": false,
+          "trimestres": {
+            "trimestre_1": {
+              "cours": [
+                { "id": "7_phys_t1_c1", "titre": "الدرس 1: الحالات الفيزيائية للمادة" },
+                { "id": "7_phys_t1_c2", "titre": "الدرس 2: قيس الحجوم والكتل" }
+              ],
+              "resumes": [{ "id": "7_phys_t1_r1", "titre": "بطاقة مراجعة: الوحدات الفيزيائية" }],
+              "qcm": [{ "id": "7_phys_t1_q1", "parent_lecon_id": "7_phys_t1_c1", "titre": "تطبيق: الانصهار والتبخر" }],
+              "devoir_controle": [{ "id": "7_phys_t1_dc1", "titre": "فرض مراقبة عدد 1 في الفيزياء" }],
+              "synthese": [{ "id": "7_phys_t1_ds1", "titre": "فرض تأليفي عدد 1 في الفيزياء" }],
+              "serie": [{ "id": "7_phys_t1_s1", "titre": "تمارين قيس الحجم والكثافة" }]
+            }
+          }
+        },
+        {
+          "id": "7_fr",
+          "nom": "الفرنسية (Français)",
+          "est_math": false,
+          "trimestres": {
+            "trimestre_1": {
+              "cours": [
+                { "id": "7_fr_t1_c1", "titre": "Module 1 : Enfance et Famille" },
+                { "id": "7_fr_t1_c2", "titre": "Grammaire : Les types de phrases" }
+              ],
+              "resumes": [{ "id": "7_fr_t1_r1", "titre": "Fiche lexique : La famille" }],
+              "qcm": [{ "id": "7_fr_t1_q1", "parent_lecon_id": "7_fr_t1_c2", "titre": "Quiz : Types de phrases" }],
+              "devoir_controle": [{ "id": "7_fr_t1_dc1", "titre": "Devoir de Contrôle N°1 - Français" }],
+              "synthese": [{ "id": "7_fr_t1_ds1", "titre": "Devoir de Synthèse N°1 - Français" }],
+              "serie": [{ "id": "7_fr_t1_s1", "titre": "Série d'exercices de conjugaison" }]
+            }
+          }
+        },
+        {
+          "id": "7_en",
+          "nom": "الإنجليزية (English)",
+          "est_math": false,
+          "trimestres": {
+            "trimestre_1": {
+              "cours": [
+                { "id": "7_en_t1_c1", "titre": "Lesson 1: Hello! Introducing Myself" },
+                { "id": "7_en_t1_c2", "titre": "Lesson 2: My School Supplies" }
+              ],
+              "resumes": [{ "id": "7_en_t1_r1", "titre": "Vocabulary List: Greetings & Numbers" }],
+              "qcm": [{ "id": "7_en_t1_q1", "parent_lecon_id": "7_en_t1_c1", "titre": "Quiz: Verb 'To Be'" }],
+              "devoir_controle": [{ "id": "7_en_t1_dc1", "titre": "English Test N°1" }],
+              "synthese": [{ "id": "7_en_t1_ds1", "titre": "English Mid-Term Exam" }],
+              "serie": [{ "id": "7_en_t1_s1", "titre": "Practice Exercises" }]
+            }
+          }
+        },
+        {
+          "id": "7_hist_geo",
+          "nom": "التاريخ والجغرافيا",
+          "est_math": false,
+          "trimestres": {
+            "trimestre_1": {
+              "cours": [
+                { "id": "7_hg_t1_c1", "titre": "تاريخ: ظهور الإنسان وفجر التاريخ" },
+                { "id": "7_hg_t1_c2", "titre": "جغرافيا: الأرض كوكب في تحول" }
+              ],
+              "resumes": [{ "id": "7_hg_t1_r1", "titre": "ملخص: خريطة خطوط الطول ودوائر العرض" }],
+              "qcm": [{ "id": "7_hg_t1_q1", "parent_lecon_id": "7_hg_t1_c1", "titre": "تطبيق: عصور ما قبل التاريخ" }],
+              "devoir_controle": [{ "id": "7_hg_t1_dc1", "titre": "فرض مراقبة عدد 1: تاريخ وجغرافيا" }],
+              "synthese": [{ "id": "7_hg_t1_ds1", "titre": "فرض تأليفي عدد 1: تاريخ وجغرافيا" }],
+              "serie": [{ "id": "7_hg_t1_s1", "titre": "سلسلة تمارين: الجداول الزمنية" }]
+            }
+          }
+        },
+        {
+          "id": "7_islamic",
+          "nom": "التربية الإسلامية",
+          "est_math": false,
+          "trimestres": {
+            "trimestre_1": {
+              "cours": [
+                { "id": "7_is_t1_c1", "titre": "قرآن كريم: سورة المطففين وشرحها" },
+                { "id": "7_is_t1_c2", "titre": "عقيدة: الإيمان بالله وأثره في السلوك" }
+              ],
+              "resumes": [{ "id": "7_is_t1_r1", "titre": "ملخص: معاني الكلمات للحفظ" }],
+              "qcm": [{ "id": "7_is_t1_q1", "parent_lecon_id": "7_is_t1_c2", "titre": "تطبيق: أركان الإيمان" }],
+              "devoir_controle": [{ "id": "7_is_t1_dc1", "titre": "فرض مراقبة عدد 1" }],
+              "synthese": [{ "id": "7_is_t1_ds1", "titre": "فرض تأليفي عدد 1" }],
+              "serie": [{ "id": "7_is_t1_s1", "titre": "سلسلة مراجعة وتطبيقات فقهية" }]
+            }
+          }
+        },
+        {
+          "id": "7_tech",
+          "nom": "التربية التكنولوجية",
+          "est_math": false,
+          "trimestres": {
+            "trimestre_1": {
+              "cours": [
+                { "id": "7_tec_t1_c1", "titre": "الدرس 1: كراس الشروط والمشروع التكنولوجي" },
+                { "id": "7_tec_t1_c2", "titre": "الدرس 2: التعبير الوظيفي عن الحاجة" }
+              ],
+              "resumes": [{ "id": "7_tec_t1_r1", "titre": "مخطط: الرسم التقني والرموز" }],
+              "qcm": [{ "id": "7_tec_t1_q1", "parent_lecon_id": "7_tec_t1_c2", "titre": "تطبيق: أداة التعبير عن الحاجة" }],
+              "devoir_controle": [{ "id": "7_tec_t1_dc1", "titre": "فرض مراقبة عدد 1: تكنولوجيا" }],
+              "synthese": [{ "id": "7_tec_t1_ds1", "titre": "فرض تأليفي عدد 1: تكنولوجيا" }],
+              "serie": [{ "id": "7_tec_t1_s1", "titre": "تمارين تطبيقية: المحرك والكهرباء" }]
+            }
+          }
+        },
+        {
+          "id": "7_info",
+          "nom": "تكنولوجيا المعلومات (Informatique)",
+          "est_math": false,
+          "trimestres": {
+            "trimestre_1": {
+              "cours": [
+                { "id": "7_inf_t1_c1", "titre": "الدرس 1: مكونات الحاسوب الأساسية" },
+                { "id": "7_inf_t1_c2", "titre": "الدرس 2: نظام التشغيل وإدارة الملفات" }
+              ],
+              "resumes": [{ "id": "7_inf_t1_r1", "titre": "مخطط بياني: نظام المعالجة والذاكرة" }],
+              "qcm": [{ "id": "7_inf_t1_q1", "parent_lecon_id": "7_inf_t1_c1", "titre": "تطبيق: وحدات الإدخال والإخراج" }],
+              "devoir_controle": [{ "id": "7_inf_t1_dc1", "titre": "فرض مراقبة عدد 1: إعلامية" }],
+              "synthese": [{ "id": "7_inf_t1_ds1", "titre": "فرض تأليفي عدد 1: إعلامية" }],
+              "serie": [{ "id": "7_inf_t1_s1", "titre": "تمارين تطبيقية" }]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "8eme",
+      "nom": "الثامنة من التعليم الأساسي",
+      "matieres": [
+        {
+Utilisez le code avec précaution.
+"id": "8_math",
+"nom": "الرياضيات",
+"est_math": true,
+"trimestres": {
+"trimestre_1": {
+"cours": {
+"algebre": [
+{ "id": "8_m_t1_c_alg1", "titre": "الدرس 1: الأعداد الجذرية - تقديم والعمليات" },
+{ "id": "8_m_t1_c_alg2", "titre": "الدرس 2: مقارنة الأعداد الجذرية" }
+],
+"geometrie": [
+{ "id": "8_m_t1_c_geo1", "titre": "الدرس 1: المثلثات - المقاييس والخصائص" },
+{ "id": "8_m_t1_c_geo2", "titre": "الدرس 2: متوازي الأضلاع" }
+]
+},
+"resumes": {
+"algebre": [{ "id": "8_m_t1_r_alg1", "titre": "ملخص: توحيد المقامات والعمليات" }],
+"geometrie": [{ "id": "8_m_t1_r_geo1", "titre": "ملخص: قواعد بناء المثلثات ومتوازي الأضلاع" }]
+},
+"qcm": [{ "id": "8_m_t1_q1", "parent_lecon_id": "8_m_t1_c_alg1", "titre": "تطبيق: العمليات في مجموعة الأعداد الجذرية" }],
+"devoir_controle": [{ "id": "8_m_t1_dc1", "titre": "فرض مراقبة عدد 1 في الرياضيات" }],
+"synthese": [{ "id": "8_m_t1_ds1", "titre": "فرض تأليفي عدد 1 في الرياضيات" }],
+"serie": [{ "id": "8_m_t1_s1", "titre": "سلسلة تمارين: تعمق في الهندسة المستوية" }]
+}
+}
+},
+{
+"id": "8_ar",
+"nom": "العربية",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "8_ar_t1_c1", "titre": "شرح نص: المحور 1 - المدينة والريف" },
+{ "id": "8_ar_t1_c2", "titre": "قواعد اللغة: الفاعل ومتممات الجملة الفعلية" }
+],
+"resumes": [{ "id": "8_ar_t1_r1", "titre": "ملخص: أحكام الفاعل والمفاعيل" }],
+"qcm": [{ "id": "8_ar_t1_q1", "parent_lecon_id": "8_ar_t1_c2", "titre": "تطبيق: تمييز المفاعيل وإعرابها" }],
+"devoir_controle": [{ "id": "8_ar_t1_dc1", "titre": "فرض مراقبة عدد 1 في العربية" }],
+"synthese": [{ "id": "8_ar_t1_ds1", "titre": "فرض تأليفي عدد 1 في العربية" }],
+"serie": [{ "id": "8_ar_t1_s1", "titre": "سلسلة دعم: تحليل السند والإنتاج" }]
+}
+}
+},
+{
+"id": "8_svt",
+"nom": "علوم الحياة والأرض",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "8_svt_t1_c1", "titre": "الدرس 1: زلازل وتكتونية الصفائح" },
+{ "id": "8_svt_t1_c2", "titre": "الدرس 2: البراكين وعلاقتها بزبزبة الأرض" }
+],
+"resumes": [{ "id": "8_svt_t1_r1", "titre": "رسم توضيحي: بنية الكرة الأرضية وحركة الصفائح" }],
+"qcm": [{ "id": "8_svt_t1_q1", "parent_lecon_id": "8_svt_t1_c1", "titre": "تطبيق: الموجات الزلزالية والظهرات المحيطية" }],
+"devoir_controle": [{ "id": "8_svt_t1_dc1", "titre": "فرض مراقبة عدد 1 في الجيولوجيا" }],
+"synthese": [{ "id": "8_svt_t1_ds1", "titre": "فرض تأليفي عدد 1 في الجيولوجيا" }],
+"serie": [{ "id": "8_svt_t1_s1", "titre": "تمارين مراجعة: تشوه القشرة الأرضية" }]
+}
+}
+},
+{
+"id": "8_phys",
+"nom": "العلوم الفيزيائية",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "8_phys_t1_c1", "titre": "الدرس 1: الهواء كخليط غازي وخصائصه" },
+{ "id": "8_phys_t1_c2", "titre": "الدرس 2: الجزيئات والذرات - مدخل الكيمياء" }
+],
+"resumes": [{ "id": "8_phys_t1_r1", "titre": "بطاقة مراجعة: الصيغ الكيميائية للغازات الشائعة" }],
+"qcm": [{ "id": "8_phys_t1_q1", "parent_lecon_id": "8_phys_t1_c2", "titre": "تطبيق: النمذجة الجزيئية والمجسمات" }],
+"devoir_controle": [{ "id": "8_phys_t1_dc1", "titre": "فرض مراقبة عدد 1 في الفيزياء" }],
+"synthese": [{ "id": "8_phys_t1_ds1", "titre": "فرض تأليفي عدد 1 في الفيزياء" }],
+"serie": [{ "id": "8_phys_t1_s1", "titre": "سلسلة تمارين: موازنة المعادلات الكيميائية البسيطة" }]
+}
+}
+},
+{
+"id": "8_fr",
+"nom": "الفرنسية (Français)",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "8_fr_t1_c1", "titre": "Module 1 : Portraits et Récits de Vie" },
+{ "id": "8_fr_t1_c2", "titre": "Grammaire : L'expansion du nom" }
+],
+"resumes": [{ "id": "8_fr_t1_r1", "titre": "Fiche technique : Rédiger un portrait" }],
+"qcm": [{ "id": "8_fr_t1_q1", "parent_lecon_id": "8_fr_t1_c2", "titre": "Quiz : L'accord de l'adjectif" }],
+"devoir_controle": [{ "id": "8_fr_t1_dc1", "titre": "Devoir de Contrôle N°1 - Français" }],
+"synthese": [{ "id": "8_fr_t1_ds1", "titre": "Devoir de Synthèse N°1 - Français" }],
+"serie": [{ "id": "8_fr_t1_s1", "titre": "Série d'exercices de vocabulaire descriptif" }]
+}
+}
+},
+{
+"id": "8_en",
+"nom": "الإنجليزية (English)",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "8_en_t1_c1", "titre": "Lesson 1: My Family and Daily Routine" },
+{ "id": "8_en_t1_c2", "titre": "Lesson 2: Free Time Activities" }
+],
+"resumes": [{ "id": "8_en_t1_r1", "titre": "Grammar Map: Present Simple" }],
+"qcm": [{ "id": "8_en_t1_q1", "parent_lecon_id": "8_en_t1_c1", "titre": "Quiz: Adverbs of frequency" }],
+"devoir_controle": [{ "id": "8_en_t1_dc1", "titre": "English Test N°1" }],
+"synthese": [{ "id": "8_en_t1_ds1", "titre": "English Mid-Term Exam" }],
+"serie": [{ "id": "8_en_t1_s1", "titre": "Writing Task Practice" }]
+}
+}
+},
+{
+"id": "8_hist_geo",
+"nom": "التاريخ والجغرافيا",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "8_hg_t1_c1", "titre": "تاريخ: الحضارات القديمة في بلاد المغرب" },
+{ "id": "8_hg_t1_c2", "titre": "جغرافيا: سكان العالم وتوزيعهم" }
+],
+"resumes": [{ "id": "8_hg_t1_r1", "titre": "ملخص: قرطاج وتوسعها التجاري" }],
+"qcm": [{ "id": "8_hg_t1_q1", "parent_lecon_id": "8_hg_t1_c1", "titre": "تطبيق: المعالم الأثرية البونية" }],
+"devoir_controle": [{ "id": "8_hg_t1_dc1", "titre": "فرض مراقبة عدد 1: تاريخ وجغرافيا" }],
+"synthese": [{ "id": "8_hg_t1_ds1", "titre": "فرض تأليفي عدد 1: تاريخ وجغرافيا" }],
+"serie": [{ "id": "8_hg_t1_s1", "titre": "تحليل الخرائط السكانية" }]
+}
+}
+},
+{
+"id": "8_islamic",
+"nom": "التربية الإسلامية",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "8_is_t1_c1", "titre": "قرآن كريم: سورة الحجرات (من الآية 1 إلى 10)" },
+{ "id": "8_is_t1_c2", "titre": "حديث شريف: الأخوة الإسلامية" }
+],
+"resumes": [{ "id": "8_is_t1_r1", "titre": "ملخص: الآداب الاجتماعية" }],
+"qcm": [{ "id": "8_is_t1_q1", "parent_lecon_id": "8_is_t1_c2", "titre": "تطبيق: قيم التسامح" }],
+"devoir_controle": [{ "id": "8_is_t1_dc1", "titre": "فرض مراقبة عدد 1" }],
+"synthese": [{ "id": "8_is_t1_ds1", "titre": "فرض تأليفي عدد 1" }],
+"serie": [{ "id": "8_is_t1_s1", "titre": "تمارين تطبيقية وتفسير نصوص" }]
+}
+}
+},
+{
+"id": "8_tech",
+"nom": "التربية التكنولوجية",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "8_tec_t1_c1", "titre": "الدرس 1: وظائف التغذية الكهربائية" },
+{ "id": "8_tec_t1_c2", "titre": "الدرس 2: الإسقاط العمودي في الرسم التقني" }
+],
+"resumes": [{ "id": "8_tec_t1_r1", "titre": "دليل تقني: رموز الصهيرة" }],
+"qcm": [{ "id": "8_tec_t1_q1", "parent_lecon_id": "8_tec_t1_c2", "titre": "تطبيق: استنتاج المظهر المفقود" }],
+"devoir_controle": [{ "id": "8_tec_t1_dc1", "titre": "فرض مراقبة عدد 1: تكنولوجيا" }],
+"synthese": [{ "id": "8_tec_t1_ds1", "titre": "فرض تأليفي عدد 1: تكنولوجيا" }],
+"serie": [{ "id": "8_tec_t1_s1", "titre": "تمارين الدارات الكهربائية" }]
+}
+}
+},
+{
+"id": "8_info",
+"nom": "تكنولوجيا المعلومات (Informatique)",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "8_inf_t1_c1", "titre": "الدرس 1: معالجة النصوص المتقدمة" },
+{ "id": "8_inf_t1_c2", "titre": "الدرس 2: شبكات الحاسوب والإنترنت" }
+],
+"resumes": [{ "id": "8_inf_t1_r1", "titre": "بطاقة تذكير: تنسيق الجداول" }],
+"qcm": [{ "id": "8_inf_t1_q1", "parent_lecon_id": "8_inf_t1_c2", "titre": "تطبيق: أنواع الشبكات" }],
+"devoir_controle": [{ "id": "8_inf_t1_dc1", "titre": "فرض مراقبة عدد 1" }],
+"synthese": [{ "id": "8_inf_t1_ds1", "titre": "فرض تأليفي عدد 1" }],
+"serie": [{ "id": "8_inf_t1_s1", "titre": "تمارين تطبيقية عملية" }]
+}
+}
+}
+]
+},
+{
+"id": "9eme",
+"nom": "التاسعة من التعليم الأساسي",
+"matieres": [
+{
+"id": "9_math",
+"nom": "الرياضيات",
+"est_math": true,
+"trimestres": {
+"trimestre_1": {
+"cours": {
+"algebre": [
+{ "id": "9_m_t1_c_alg1", "titre": "الدرس 1: العمليات في مجموعة الأعداد الحقيقية R" },
+{ "id": "9_m_t1_c_alg2", "titre": "الدرس 2: القوى والجذور التربيعية المعمقة" },
+{ "id": "9_m_t1_c_alg3", "titre": "الدرس 3: الجذاءات الشهيرة وتفكيك العبارات" }
+],
+"geometrie": [
+{ "id": "9_m_t1_c_geo1", "titre": "الدرس 1: مبرهنة طاليس وتطبيقاتها" },
+{ "id": "9_m_t1_c_geo2", "titre": "الدرس 2: العلاقات القياسية في المثلث القائم" }
+]
+},
+"resumes": {
+"algebre": [{ "id": "9_m_t1_r_alg1", "titre": "قوانين ذهبية: الجذاءات الشهيرة" }],
+"geometrie": [{ "id": "9_m_t1_r_geo1", "titre": "خلاصة الهندسة: مبرهنة طاليس" }]
+},
+"qcm": [{ "id": "9_m_t1_q1", "parent_lecon_id": "9_m_t1_c_alg3", "titre": "تطبيق: النشر والتفكيك السريع" }],
+"devoir_controle": [
+{ "id": "9_m_t1_dc1_v1", "titre": "فرض مراقبة عدد 1 - نموذج معاهد عامة" },
+{ "id": "9_m_t1_dc1_v2", "titre": "فرض مراقبة عدد 1 - نموذج نموذجي (Pilote)" }
+],
+"synthese": [{ "id": "9_m_t1_ds1", "titre": "فرض تأليفي عدد 1 في الرياضيات مناظرة" }],
+"serie": [{ "id": "9_m_t1_s1", "titre": "سلسلة مناظرة النوفيام: هندسة وحساب" }]
+}
+}
+},
+{
+"id": "9_ar",
+"nom": "العربية",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "9_ar_t1_c1", "titre": "شرح نص: المحور 1 - شواغل معاصرة" },
+{ "id": "9_ar_t1_c2", "titre": "قواعد اللغة: الجملة المركبة" }
+],
+"resumes": [{ "id": "9_ar_t1_r1", "titre": "ملخص شامل: المركبات النحوية" }],
+"qcm": [{ "id": "9_ar_t1_q1", "parent_lecon_id": "9_ar_t1_c2", "titre": "تطبيق مناظرة: تفكيك الجملة" }],
+"devoir_controle": [{ "id": "9_ar_t1_dc1", "titre": "فرض مراقبة عدد 1 في العربية" }],
+"synthese": [{ "id": "9_ar_t1_ds1", "titre": "فرض تأليفي عدد 1" }],
+"serie": [{ "id": "9_ar_t1_s1", "titre": "نماذج إنتاج كتابي وحجج للمناظرة" }]
+}
+}
+},
+{
+"id": "9_svt",
+"nom": "علوم الحياة والأرض",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "9_svt_t1_c1", "titre": "الدرس 1: الهضم والامتصاص المعوي عند الإنسان" },
+{ "id": "9_svt_t1_c2", "titre": "الدرس 2: المجموعات الغذائية والراتب الغذائي" }
+],
+"resumes": [{ "id": "9_svt_t1_r1", "titre": "شجرة تصنيفية: الإنزيمات الهاضمة" }],
+"qcm": [{ "id": "9_svt_t1_q1", "parent_lecon_id": "9_svt_t1_c1", "titre": "تطبيق: الكواشف الكيميائية للأغذية" }],
+"devoir_controle": [{ "id": "9_svt_t1_dc1", "titre": "فرض مراقبة عدد 1" }],
+"synthese": [{ "id": "9_svt_t1_ds1", "titre": "فرض تأليفي عدد 1" }],
+"serie": [{ "id": "9_svt_t1_s1", "titre": "تمارين تحليل الرسوم البيانية" }]
+}
+}
+},
+{
+"id": "9_phys",
+"nom": "العلوم الفيزيائية",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "9_phys_t1_c1", "titre": "الدرس 1: التيار الكهربائي المتناوب الجيبي" },
+{ "id": "9_phys_t1_c2", "titre": "الدرس 2: الاحتراق التام والغير التام" }
+],
+"resumes": [{ "id": "9_phys_t1_r1", "titre": "ملخص القوانين: التوتر الأقصى والفعال" }],
+"qcm": [{ "id": "9_phys_t1_q1", "parent_lecon_id": "9_phys_t1_c1", "titre": "تطبيق: قراءة شاشة راسم الاهتزاز" }],
+"devoir_controle": [{ "id": "9_phys_t1_dc1", "titre": "فرض مراقبة عدد 1" }],
+"synthese": [{ "id": "9_phys_t1_ds1", "titre": "فرض تأليفي عدد 1" }],
+"serie": [{ "id": "9_phys_t1_s1", "titre": "سلسلة تمارين دعم للمناظرة" }]
+}
+}
+},
+{
+"id": "9_fr",
+"nom": "الفرنسية (Français)",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "9_fr_t1_c1", "titre": "Module 1 : Solidarité et Valeurs Humaines" },
+{ "id": "9_fr_t1_c2", "titre": "Grammaire : L'expression de la cause" }
+],
+"resumes": [{ "id": "9_fr_t1_r1", "titre": "Vocabulaire thématique : Entraide" }],
+"qcm": [{ "id": "9_fr_t1_q1", "parent_lecon_id": "9_fr_t1_c2", "titre": "Quiz Concours : Subordination" }],
+"devoir_controle": [{ "id": "9_fr_t1_dc1", "titre": "Devoir de Contrôle N°1 - Français" }],
+"synthese": [{ "id": "9_fr_t1_ds1", "titre": "Devoir de Synthèse N°1 - Concours" }],
+"serie": [{ "id": "9_fr_t1_s1", "titre": "Série d'entraînement à la production écrite" }]
+}
+}
+},
+{
+"id": "9_en",
+"nom": "الإنجليزية (English)",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "9_en_t1_c1", "titre": "Lesson 1: Family Relations & Problems" },
+{ "id": "9_en_t1_c2", "titre": "Lesson 2: Pocket Money" }
+],
+"resumes": [{ "id": "9_en_t1_r1", "titre": "Essential Grammar: Present Perfect" }],
+"qcm": [{ "id": "9_en_t1_q1", "parent_lecon_id": "9_en_t1_c1", "titre": "Quiz: Modals of obligation" }],
+"devoir_controle": [{ "id": "9_en_t1_dc1", "titre": "English Test N°1" }],
+"synthese": [{ "id": "9_en_t1_ds1", "titre": "English Examination N°1" }],
+"serie": [{ "id": "9_en_t1_s1", "titre": "Série de révision: Language" }]
+}
+}
+},
+{
+"id": "9_hist_geo",
+"nom": "التاريخ والجغرافيا",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "9_hg_t1_c1", "titre": "تاريخ: الحرب العالمية الأولى" },
+{ "id": "9_hg_t1_c2", "titre": "جغرافيا: تونس - الخصائص الطبيعية" }
+],
+"resumes": [{ "id": "9_hg_t1_r1", "titre": "ملخص شامل: التضاريس والمناخ بتونس" }],
+"qcm": [{ "id": "9_hg_t1_q1", "parent_lecon_id": "9_hg_t1_c1", "titre": "تطبيق: معاهدة فرساي" }],
+"devoir_controle": [{ "id": "9_hg_t1_dc1", "titre": "فرض مراقبة عدد 1: تاريخ وجغرافيا" }],
+"synthese": [{ "id": "9_hg_t1_ds1", "titre": "فرض تأليفي عدد 1" }],
+"serie": [{ "id": "9_hg_t1_s1", "titre": "سلسلة مراجعة النوفيام: تحليل الوثائق" }]
+}
+}
+},
+{
+"id": "9_islamic",
+"nom": "التربية الإسلامية",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "9_is_t1_c1", "titre": "قرآن كريم: سورة الحشر (من الآية 18 إلى 24)" },
+{ "id": "9_is_t1_c2", "titre": "سيرة: فتح مكة - أسبابه وأحداثه" }
+],
+"resumes": [{ "id": "9_is_t1_r1", "titre": "ملخص: قيمة العفو عند المقدرة" }],
+"qcm": [{ "id": "9_is_t1_q1", "parent_lecon_id": "9_is_t1_c1", "titre": "تطبيق: أسماء الله الحسنى" }],
+"devoir_controle": [{ "id": "9_is_t1_dc1", "titre": "فرض مراقبة عدد 1" }],
+"synthese": [{ "id": "9_is_t1_ds1", "titre": "فرض تأليفي عدد 1" }],
+"serie": [{ "id": "9_is_t1_s1", "titre": "سلسلة تمارين وتطبيقات سلوكية" }]
+}
+}
+},
+{
+"id": "9_tech",
+"nom": "التربية التكنولوجية",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "9_tec_t1_c1", "titre": "الدرس 1: وظيفة الدوران ونقل الحركة ميكانيكياً" },
+{ "id": "9_tec_t1_c2", "titre": "الدرس 2: الأنظمة الآلية والمنطق التوافقي" }
+],
+"resumes": [{ "id": "9_tec_t1_r1", "titre": "خريطة المفاهيم: البوابات المنطقية" }],
+"qcm": [{ "id": "9_tec_t1_q1", "parent_lecon_id": "9_tec_t1_c2", "titre": "تطبيق: تبسيط المعادلات المنطقية" }],
+"devoir_controle": [{ "id": "9_tec_t1_dc1", "titre": "فرض مراقبة عدد 1" }],
+"synthese": [{ "id": "9_tec_t1_ds1", "titre": "فرض تأليفي عدد 1" }],
+"serie": [{ "id": "9_tec_t1_s1", "titre": "تمارين دراسة الأنظمة الآلية" }]
+}
+}
+},
+{
+"id": "9_info",
+"nom": "تكنولوجيا المعلومات (Informatique)",
+"est_math": false,
+"trimestres": {
+"trimestre_1": {
+"cours": [
+{ "id": "9_inf_t1_c1", "titre": "الدرس 1: البرمجة ولغة سكراتش" },
+{ "id": "9_inf_t1_c2", "titre": "الدرس 2: الخوارزميات الأساسية" }
+],
+"resumes": [{ "id": "9_inf_t1_r1", "titre": "بطاقة مراجعة: المتغيرات والشروط" }],
+"qcm": [{ "id": "9_inf_t1_q1", "parent_lecon_id": "9_inf_t1_c2", "titre": "تطبيق: تتبع مسار خوارزمية" }],
+"devoir_controle": [{ "id": "9_inf_t1_dc1", "titre": "فرض مراقبة عدد 1" }],
+"synthese": [{ "id": "9_inf_t1_ds1", "titre": "فرض تأليفي عدد 1" }],
+"serie": [{ "id": "9_inf_t1_s1", "titre": "مشاريع عملية وتمارين برمجية" }]
+}
+}
+}
+]
+}
+]
+}
+
