@@ -1,34 +1,86 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-
-class DocumentFileItem {
-  final String title;
-  final String size;
-  final String dateAdded;
-
-  DocumentFileItem({
-    required this.title,
-    required this.size,
-    required this.dateAdded,
-  });
-}
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart'; // Nécessaire pour ouvrir les fichiers Drive
 
 class DocumentsListScreen extends StatelessWidget {
-  final String categoryTitle;
-  final String subjectName;
-  final String trimesterName;
+  final String categoryTitle; // 'cours', 'resumes', 'devoir_controle', etc.
+  final String subjectName;    // Récupéré depuis l'Écran 3 (ex: 'الرياضيات')
+  final String trimesterName;  // Récupéré depuis l'Écran 4 (ex: 'الثلاثي الأول')
+  final String niveauId;       // Nécessaire pour filtrer le Sheets
+  final String matiereId;      // Nécessaire pour filtrer le Sheets
+  final String trimestreId;    // Nécessaire pour filtrer le Sheets
 
   const DocumentsListScreen({
     super.key,
     required this.categoryTitle,
     required this.subjectName,
     required this.trimesterName,
+    required this.niveauId,
+    required this.matiereId,
+    required this.trimestreId,
   });
+
+  // 📡 Charge et filtre à la demande les lignes du Google Sheets enregistrées en cache
+  Future<List<Map<String, dynamic>>> _chargerDocumentsDynamiques() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String? cachedData = prefs.getString('cache_programme_monlege');
+    
+    if (cachedData != null) {
+      final List<dynamic> lignesSheet = jsonDecode(cachedData);
+      
+      // Filtrage chirurgical selon le niveau, la matière, le trimestre et le type de bouton cliqué
+      return lignesSheet.where((ligne) {
+        final String lNiveau = ligne['NiveauId'] ?? ligne['niveauId'] ?? '';
+        final String lMatiere = ligne['MatiereId'] ?? ligne['matiereId'] ?? '';
+        final String lTrimestre = ligne['TrimestreId'] ?? ligne['trimestreId'] ?? '';
+        final String lType = ligne['TypeContenu'] ?? ligne['typeContenu'] ?? '';
+
+        return lNiveau == niveauId &&
+               lMatiere == matiereId &&
+               lTrimestre == trimestreId &&
+               lType.toLowerCase().contains(_convertirCategorieEnType(categoryTitle));
+      }).cast<Map<String, dynamic>>().toList();
+    }
+    return [];
+  }
+
+  // Permet de mapper le titre du bouton arabe avec la valeur de la colonne TypeContenu de votre Sheets
+  String _convertirCategorieEnType(String titreArabe) {
+    if (titreArabe.contains('ملخص') || titreArabe.contains('الملخصات')) return 'resume';
+    if (titreArabe.contains('مراقبة') || titreArabe.contains('فروض')) return 'devoir';
+    if (titreArabe.contains('تأليفي')) return 'synthese';
+    return 'cours'; // Par défaut
+  }
+
+  // 🔓 Ouvre le vrai lien Google Drive converti en mode externe
+  void _ouvrirFichierDrive(BuildContext context, String urlString) async {
+    if (urlString.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('الرابط غير متوفر', textAlign: TextAlign.right)),
+      );
+      return;
+    }
+    
+    final Uri url = Uri.parse(urlString);
+    try {
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url, mode: LaunchMode.externalApplication);
+      } else {
+        throw 'Impossible de lancer';
+      }
+    } catch (_) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('تعذر فتح المستند. تأكد من اتصالك بالإنترنت أو صحة رابط الـ Drive.', textAlign: TextAlign.right),
+          backgroundColor: Colors.redAccent,
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    // 📚 Génération dynamique des vrais documents officiels tunisiens
-    final List<DocumentFileItem> documents = _generateOfficialDocuments();
-
     return Scaffold(
       backgroundColor: const Color(0xFF0B0B0C),
       appBar: AppBar(
@@ -70,12 +122,32 @@ class DocumentsListScreen extends StatelessWidget {
               ),
               const SizedBox(height: 28),
               Expanded(
-                child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: documents.length,
-                  itemBuilder: (context, index) {
-                    final doc = documents[index];
-                    return _buildDocumentCard(context, doc);
+                child: FutureBuilder<List<Map<String, dynamic>>>(
+                  future: _chargerDocumentsDynamiques(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator(color: Colors.red));
+                    }
+
+                    if (snapshot.hasError || !snapshot.hasData || snapshot.data!.isEmpty) {
+                      return const Center(
+                        child: Text(
+                          "لا توجد وثائق متوفرة حالياً في هذا القسم.",
+                          style: TextStyle(color: Colors.white38, fontSize: 15, fontFamily: 'sans-serif'),
+                        ),
+                      );
+                    }
+
+                    final documents = snapshot.data!;
+
+                    return ListView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: documents.length,
+                      itemBuilder: (context, index) {
+                        final doc = documents[index];
+                        return _buildDocumentCard(context, doc);
+                      },
+                    );
                   },
                 ),
               ),
@@ -86,7 +158,10 @@ class DocumentsListScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDocumentCard(BuildContext context, DocumentFileItem doc) {
+  Widget _buildDocumentCard(BuildContext context, Map<String, dynamic> doc) {
+    final String titre = doc['TitreCours'] ?? doc['titreCours'] ?? 'مستند بدون عنوان';
+    final String lien = doc['LienFichier'] ?? doc['lienFichier'] ?? '';
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
@@ -96,27 +171,28 @@ class DocumentsListScreen extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
-        onTap: () {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('جاري فتح المستند: ${doc.title}', textAlign: TextAlign.right, style: const TextStyle(fontFamily: 'sans-serif')),
-              backgroundColor: const Color(0xFF10B981),
-            ),
-          );
-        },
+        onTap: () => _ouvrirFichierDrive(context, lien), // Déclenche l'ouverture du vrai Drive
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
             children: [
-              Text(doc.size, style: TextStyle(color: Colors.white.withValues(alpha: 0.4), fontSize: 12)),
+              Text("📥 فتح", style: TextStyle(color: Colors.white.withValues(alpha: 0.4), fontSize: 12)),
               const Spacer(),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(doc.title, textAlign: TextAlign.right, style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'sans-serif')),
+                    Text(
+                      titre,
+                      textAlign: Alignment.right == Alignment.right ? TextAlign.right : TextAlign.left,
+                      style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'sans-serif'),
+                    ),
                     const SizedBox(height: 4),
-                    Text('تاريخ الإضافة: ${doc.dateAdded}', textAlign: TextAlign.right, style: TextStyle(color: Colors.white.withValues(alpha: 0.3), fontSize: 11, fontFamily: 'sans-serif')),
+                    const Text(
+                      'تحديث مباشر عبر السحابة',
+                      textAlign: TextAlign.right,
+                      style: TextStyle(color: Colors.greenAccent, fontSize: 11, fontFamily: 'sans-serif'),
+                    ),
                   ],
                 ),
               ),
@@ -132,45 +208,5 @@ class DocumentsListScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  List<DocumentFileItem> _generateOfficialDocuments() {
-    String subKey = subjectName.contains('الرياضيات') ? 'math' : (subjectName.contains('الفيزيائية') ? 'phys' : 'other');
-
-    if (categoryTitle == 'الملخصات') {
-      if (subKey == 'math') {
-        return [
-          DocumentFileItem(title: 'ملخص درس الأعداد الصحيحة الطبيعية وبنية الحساب', size: '1.1 MB', dateAdded: 'أكتوبر 2026'),
-          DocumentFileItem(title: 'ملخص القواعد العامة للأعداد الكسرية والعمليات', size: '950 KB', dateAdded: 'أكتوبر 2026'),
-          DocumentFileItem(title: 'ملخص الهندسة: التناظر المحوري وخصائصه', size: '1.4 MB', dateAdded: 'أكتوبر 2026'),
-        ];
-      } else {
-        return [
-          DocumentFileItem(title: 'ملخص شامل لمحور الدارة الكهربائية البسيطة', size: '1.2 MB', dateAdded: 'أكتوبر 2026'),
-          DocumentFileItem(title: 'ملخص قوانين قياس شدة التيار والتوتر', size: '850 KB', dateAdded: 'أكتوبر 2026'),
-        ];
-      }
-    } else if (categoryTitle == 'فروض المراقبة') {
-      return [
-        DocumentFileItem(title: 'فرض مراقبة عدد 1 - النموذج القياسي تونس + الإصلاح', size: '2.1 MB', dateAdded: 'أكتوبر 2026'),
-        DocumentFileItem(title: 'فرض مراقبة عدد 1 - نموذج معاهد النموذجية مع الحل', size: '2.5 MB', dateAdded: 'أكتوبر 2026'),
-      ];
-    } else if (categoryTitle == 'الفروض التأليفية') {
-      return [
-        DocumentFileItem(title: 'فرض تأليفي عدد 1 - مراجعة شاملة لثلاثي الأول مع الإصلاح', size: '3.4 MB', dateAdded: 'نوفمبر 2026'),
-      ];
-    } else {
-      // Pour "السلاسل المصححة"
-      if (subKey == 'math') {
-        return [
-          DocumentFileItem(title: 'سلسلة تمارين مصححة: المعادلات من الدرجة الأولى', size: '1.8 MB', dateAdded: 'أكتوبر 2026'),
-          DocumentFileItem(title: 'سلسلة مسائل دعم وتقوية في الهندسة والمثلثات', size: '2.2 MB', dateAdded: 'أكتوبر 2026'),
-        ];
-      } else {
-        return [
-          DocumentFileItem(title: 'سلسلة تمارين: تطبيقات عملية على الكتلة الحجمية', size: '1.4 MB', dateAdded: 'أكتوبر 2026'),
-        ];
-      }
-    }
   }
 }

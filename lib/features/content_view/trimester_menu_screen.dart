@@ -12,7 +12,7 @@ class TrimesterMenuScreen extends StatelessWidget {
   });
 
   // Sécurité Paywall globale (Mettre sur 'true' pour tester l'ouverture des leçons)
-  final bool aPayeLApp = false;
+  final bool aPayeLApp = true;
 
   @override
   Widget build(BuildContext context) {
