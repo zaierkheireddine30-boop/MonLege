@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import '../data/subjects_service.dart';
 import '../widgets/subject_card.dart';
-// CORRECTION CHIRURGICALE DU CHEMIN D'IMPORTATION :
-import 'package:monlege/features/content_view/trimester_menu_screen.dart'; 
+import 'package:monlege/features/content_view/trimester_menu_screen.dart'; // Import absolu direct
 
 class SubjectsListScreen extends StatefulWidget {
   final String niveauId;   
@@ -76,7 +75,6 @@ class _SubjectsListScreenState extends State<SubjectsListScreen> {
                 return SubjectCard(
                   title: matiere['nom'] ?? 'Matière Inconnue',
                   onTap: () {
-                    // Cible corrigée vers l'Écran 4 (Choix du Trimestre avec cadenas)
                     Navigator.push(
                       context,
                       MaterialPageRoute(

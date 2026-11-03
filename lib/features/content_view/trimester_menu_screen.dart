@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:monlege/core/widgets/premium_lock_tag.dart'; // Votre widget cadenas officiel
+import 'package:monlege/core/widgets/premium_lock_tag.dart'; // Votre composant cadenas
 
 class TrimesterMenuScreen extends StatelessWidget {
   final String niveauId;
@@ -11,8 +11,8 @@ class TrimesterMenuScreen extends StatelessWidget {
     required this.matiereData,
   });
 
-  // Statut de l'élève (false = non abonné, affiche les cadenas)
-  final bool aPayeLApp = false; 
+  // Sécurité Paywall globale (Mettre sur 'true' pour tester l'ouverture des leçons)
+  final bool aPayeLApp = false;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,6 @@ class TrimesterMenuScreen extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               
-              // Génération des 3 boutons de trimestres payants
               _buildTrimesterButton(context, "الثلاثي الأول", "trimestre_1", Colors.purple),
               const SizedBox(height: 16),
               _buildTrimesterButton(context, "الثلاثي الثاني", "trimestre_2", Colors.blue),
@@ -78,7 +77,7 @@ class TrimesterMenuScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Row(
               children: [
-                // CORRECTION 1 : Ajout du paramètre obligatoire requis par votre widget 'PremiumLockTag'
+                // Injection automatique de votre cadenas si l'élève n'a pas payé
                 if (!aPayeLApp) const PremiumLockTag(isLocked: true), 
                 if (aPayeLApp) Icon(Icons.arrow_back_ios_new_rounded, color: color, size: 18),
                 const Spacer(),
@@ -99,12 +98,16 @@ class TrimesterMenuScreen extends StatelessWidget {
     );
   }
 
-  // Action du clic : Bloque directement l'élève avec le Paywall d'abonnement
   void _gererClicTrimestre(BuildContext context, String trimestreId) {
-    _afficherFenetrePaiement(context);
+    if (aPayeLApp) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Ouverture du $trimestreId en cours de développement...')),
+      );
+    } else {
+      _afficherFenetrePaiement(context);
+    }
   }
 
-  // Paywall Tunisien Sombre
   void _afficherFenetrePaiement(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -116,7 +119,6 @@ class TrimesterMenuScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // CORRECTION 2 : Remplacement de l'icône invalide par un cadenas Material standard existant
               const Icon(Icons.lock_outline_rounded, color: Colors.amber, size: 45),
               const SizedBox(height: 16),
               const Text(
